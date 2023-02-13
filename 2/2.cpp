@@ -2,7 +2,6 @@
 //
 
 #include <iostream>
-
 int sum(int* num1, signed char* num2) {
     return *num1 + *num2;
 }
