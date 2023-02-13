@@ -55,7 +55,6 @@ int main() {
         то работа программы заканчивается с выводом последнего результата.*/
         std::cin >> operation;
     }
-
     std::cout << "Final result: " << result << std::endl;
 
     return 0;
