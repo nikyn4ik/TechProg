@@ -21,10 +21,9 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{f1d2b8b2-d33e-4cdd-9556-e446e0c23a90}</ProjectGuid>
-    <RootNamespace>My2</RootNamespace>
+    <ProjectGuid>{658ca7f3-1a63-4cb7-b149-fd880cd80528}</ProjectGuid>
+    <RootNamespace>My222</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
-    <ProjectName>2.2.1</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">

@@ -1,4 +1,4 @@
-// 1.cpp : This file contains the 'main' function. Program execution begins and ends there.
+// main.cpp : This file contains the 'main' function. Program execution begins and ends there.
 //
 
 #include <iostream>
@@ -50,10 +50,14 @@ int main() {
             }
         }
 
-        std::cout << "Enter the operation (+, -, *, /, C, Q) or 'z' to exit: "; /*выбор операции над числом 'z' для выхода.
-        'C' программа продолжает работать, но «просит» повторить ввод. 'Q', 
+        std::cout << "Enter the operation (+, -, *, /, C) or 'Q' to exit: "; 
+        /*'C' программа продолжает работать, но «просит» повторить ввод. 'Q', 
         то работа программы заканчивается с выводом последнего результата.*/
         std::cin >> operation;
+
+        if (operation >= '0' && operation <= '9') {
+            std::cout << "Invalid operator. Try again." << std::endl;  //ошибка (метод исключения)
+        }
     }
     std::cout << "Final result: " << result << std::endl;
 
