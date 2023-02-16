@@ -4,8 +4,8 @@
 #include <iostream>
 #include <cstring>
 
-const int ARRAY_SIZE = 5;
-unsigned long int arr[ARRAY_SIZE];
+const int ARRAY_SIZE = 5; //глоб. переменная (константа, опр. размер массива)
+unsigned long int arr[ARRAY_SIZE]; //глоб. переменная (массив, хранящий введен. польз. значения)
 
 void InputElements() // функция ввода элементов массива
 {
@@ -25,7 +25,8 @@ void InputElements() // функция ввода элементов массива
 
 int CountZeroElements() // функция подсчета кол-во нулевых элементов
 {
-    int count = 0;
+    int count = 0; /*локал. переменная (хранит кол-во нулевых элементов массива, 
+    вычисляемое в функции countzeroelements())*/
     for (int i = 0; i < ARRAY_SIZE; i++)
     {
         if (arr[i] == 0)

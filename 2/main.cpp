@@ -3,49 +3,47 @@
 
 #include <iostream>
 
-void InputData(int& a, int& b) //функция ввода двух целых чисел с клавиатуры.
+float result; // глобальная переменная для хранения результата в формате float
+
+void InputData(int& num1, int& num2) //функция ввода двух целых чисел с клавиатуры.
 {
-    std::cout << "Enter two integer numbers: ";
-    std::cin >> a >> b;
+    std::cout << "Enter two integer number: ";
+    std::cin >> num1 >> num2;
     while (std::cin.fail()) // Если введены не целые числа
     {
-        std::cin.clear(); // сброс флагов ошибок
+        std::cin.clear(); // сброс
         std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // игнор. некорректных данных
-        std::cout << "Incorrect input! Please enter two integer numbers: "; // метод исключения
-        std::cin >> a >> b;
+        std::cout << "Incorrect input! "; // метод исключения
+        std::cin >> num1 >> num2;
     }
 }
 
-void CalculateSum(int a, int b, int* sum)// вычисление суммы
+void CalculateSum(int num1, int num2, int* sum)// функция для вычисление суммы
 {
-    *sum = a + b;
+    *sum = num1 + num2;
 }
 
-void ConvertToFloat(int sum, float& result)  //Функция для конвертации целочисленной суммы в тип float  
+void ConvertToFloat(int sum, float& result) // функция для конвертации целочисленной суммы в тип float  
 {
-    result = static_cast<float>(sum); //прив. типа int к float
+    result = static_cast<float>(sum); // // преобразование суммы в новый тип данных (float)
 }
 
 int main() //осн. функция
 {
-    int a, b, sum;
-    float result;
 
-    InputData(a, b); // Ввод данных типа int и signed char с клавиатуры
+    int num1, num2, sum; // локальная переменная
 
-    CalculateSum(a, b, &sum); // Расчет суммы чисел
+    InputData(num1, num2); // Ввод данных типа int и signed char с клавиатуры
 
-    ConvertToFloat(sum, result); // Преобразование суммы в тип float
+    CalculateSum(num1, num2, &sum); // Расчет суммы чисел
+    ConvertToFloat(sum, result); //функция преобразования суммы в тип float
 
     // Вывод
-    std::cout << "Sum of numbers: " << sum << std::endl;
-    std::cout << "Size of memory for sum: " << sizeof(sum) << " bytes" << std::endl;
-    std::cout << "Converted sum: " << result << std::endl;
-    std::cout << "Size of memory for converted sum: " << sizeof(result) << " bytes" << std::endl;
+    std::cout << "Sum of numbers: " << result << std::endl;
+    std::cout << "Size of memory for sum: " << sizeof(result) << " bytes" << std::endl;
 
     return 0;
 }
-
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
 // Debug program: F5 or Debug > Start Debugging menu
