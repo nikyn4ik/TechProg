@@ -2,7 +2,8 @@
 //
 
 #include <iostream>
-#include <string>
+#include <string>//строковая библиотека
+//Сообщает компилятору, что нужно включить в программу стандартную библиотеку строковых функций.
 
 using namespace std;
 
@@ -19,17 +20,16 @@ int countLetters(string input) {
     return count;
 }
 
-int main() {
+int main() { // гл. функ. программы
     string input;
-    getline(cin, input); // ввод строки с клавиатуры
-    string* inputPtr = new string(input); // выделение памяти для строки
+    getline(cin, input); // запрос ввода строки с клавиатуры
+    string* inputPtr = new string(input); // выделение дин. памяти для хран. введ. строки
     int count = countLetters(*inputPtr); // вызов функции для подсчета букв "e"
     cout << "Number of 'e' letters: " << count << endl; // вывод
-    delete inputPtr; // освоб. память
+    delete inputPtr; // освоб. дин. память
+    system("pause");
     return 0;
 }
-
-
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
 // Debug program: F5 or Debug > Start Debugging menu
