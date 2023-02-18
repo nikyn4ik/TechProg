@@ -9,14 +9,27 @@ struct Object { //определение структуры для объектов
     std::string field3;
 };
 
+// Функция для подсчета кол-ва карт без поездок
+int countCardsWithoutTrips(Object* cards, int size) {
+    int count = 0;
+    for (int i = 0; i < size; i++) {
+        if (cards[i].field1.find("card1") == std::string::npos &&
+            cards[i].field2.find("card2") == std::string::npos &&
+            cards[i].field3.find("card3") == std::string::npos) {
+            count++;
+        }
+    }
+    return count;
+}
+
 int main() {
     //инициализация массива объектов
     Object cards[5] = {
-    {"Doe", "       Smith", "     Johnson"},
-    {"John", "      Jane", "      Bob"},
-    {"China", "     France", "    Russia"},
-    {"Lawyer", "    Doctor", "    Driver"},
-    {"355-13-78", " 876-55-65", " 787-55-66"}
+    {"БЭПК ЕДИНАЯ", "                     ЕДИНАЯ ТРАНСПОРТНАЯ КАРТА", "                              БСК «Курс»"},
+    {"Для всех желающих", "               Для граждан льготной категории", "                         Для лиц первого года обучения"},
+    {"Реализации не подлежит.", "         Выдача гражданам ЕТК приостановлена.", "                   В кассах станций метрополитена"},
+    {"Реализация не производится.", "     Выдача гражданам ЕТК приостановлена.", "                   В кассах станций метрополитена."},
+    {"При утере не восстанавливается.", " Восстановление ресурса производится на «БСК льготная».", " В кассах станций метрополитена."}
     };
 
     std::ofstream file("cards.txt"); //запись в файл cards.txt
@@ -31,6 +44,9 @@ int main() {
     }
 
     file.close(); //закрытие
+
+    int count = countCardsWithoutTrips(cards, 2);
+    std::cout << "Card's without trips: " << count << std::endl;
 
     //Автом. открытие файла cards.txt
     system("start cards.txt");
