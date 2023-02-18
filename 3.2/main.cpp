@@ -2,51 +2,91 @@
 //
 #include <iostream>
 #include <fstream>//предоставляет возможность чтения и записи файлов в файловой системе
+#include <iomanip>
+#include <string>
 
-struct Object { //определение структуры для объектов
-    std::string field1;
-    std::string field2;
-    std::string field3;
+struct Object
+{ //определение структуры для объектов
+    std::string name;
+    std::string surname;
+    std::string country;
+    std::string profession;
+    std::string card_number;
+    int trips; // Количество поездок по карте.
 };
 
-// Функция для подсчета кол-ва карт без поездок
-int countCardsWithoutTrips(Object* cards, int size) {
-    int count = 0;
-    for (int i = 0; i < size; i++) {
-        if (cards[i].field1.find("card1") == std::string::npos &&
-            cards[i].field2.find("card2") == std::string::npos &&
-            cards[i].field3.find("card3") == std::string::npos) {
-            count++;
-        }
-    }
-    return count;
-}
-
-int main() {
+int main()
+{
     //инициализация массива объектов
     Object cards[5] = {
-    {"БЭПК ЕДИНАЯ", "                     ЕДИНАЯ ТРАНСПОРТНАЯ КАРТА", "                              БСК «Курс»"},
-    {"Для всех желающих", "               Для граждан льготной категории", "                         Для лиц первого года обучения"},
-    {"Реализации не подлежит.", "         Выдача гражданам ЕТК приостановлена.", "                   В кассах станций метрополитена"},
-    {"Реализация не производится.", "     Выдача гражданам ЕТК приостановлена.", "                   В кассах станций метрополитена."},
-    {"При утере не восстанавливается.", " Восстановление ресурса производится на «БСК льготная».", " В кассах станций метрополитена."}
+    {"БЭПК ЕДИНАЯ", "Для всех желающих", "Реализации не подлежит", "Реализация не производится", "При утере не восстанавливается.", 0},
+    {"ЕДИНАЯ ТРАНСПОРТНАЯ КАРТА", "Для граждан льготной категории", "Выдача гражданам ЕТК приостановлена", "Выдача гражданам ЕТК приостановлена", "Восстановление на «БСК льготная»", 1},
+    {"БСК «Курс»", "Для лиц первого года обучения", "В кассах станций метрополитена", "В кассах станций метрополитена", "В кассах станций метрополитена", 1},
+    {"БСК «Банк «СИАБ»", "Для физических лиц", "В ПАО БАНК «СИАБ».", "В ПАО БАНК «СИАБ».", "В ПАО БАНК «СИАБ».", 0},
+    {"БЭПК «ПАО ВымпелКом»", "Для клиентов оператора сотовой связи «Билайн».", "В салонах связи «Билайн».", "В салонах связи «Билайн».", "В салонах связи «Билайн».", 0}
     };
+
 
     std::ofstream file("cards.txt"); //запись в файл cards.txt
     /*Функция ofstream открывает файл для записи данных.
-    Файл называется "cards.txt" и будет создан в текущей директории программы, 
+    Файл называется "cards.txt" и будет создан в текущей директории программы,
     если его еще не существует.
     Если файл уже существует, то он будет открыт и готов к записи новых данных.*/
 
     // В цикле записываются поля каждого элемента массива cards в файл cards.txt
-    for (int i = 0; i < 5; i++) {
-        file << cards[i].field1 << " " << cards[i].field2 << " " << cards[i].field3 << std::endl;
+    for (int i = 0; i < 5; i++)
+    {
+        file << std::left << std::setw(40) << cards[i].name;
     }
 
-    file.close(); //закрытие
+    file << std::endl;
 
-    int count = countCardsWithoutTrips(cards, 2);
-    std::cout << "Card's without trips: " << count << std::endl;
+    for (int i = 0; i < 5; i++)
+    {
+        file << std::left << std::setw(40) << cards[i].surname;
+    }
+
+    file << std::endl;
+
+    for (int i = 0; i < 5; i++)
+    {
+        file << std::left << std::setw(40) << cards[i].country;
+    }
+
+    file << std::endl;
+
+    for (int i = 0; i < 5; i++)
+    {
+        file << std::left << std::setw(40) << cards[i].profession;
+    }
+
+    file << std::endl;
+
+    for (int i = 0; i < 5; i++)
+    {
+        file << std::left << std::setw(40) << cards[i].card_number;
+    }
+
+    file << std::endl;
+
+    for (int i = 0; i < 5; i++)
+    {
+        file << std::left << std::setw(40) << cards[i].trips;
+    }
+
+    // Подсчёт количества карт без поездок.
+    int count = 0;
+    for (int i = 0; i < 5; i++)
+    {
+        if (cards[i].trips == 0)
+        {
+            count++;
+        }
+    }
+
+    std::cout << count << " cards without trips." << std::endl;
+
+    file.close(); //закрытие
 
     //Автом. открытие файла cards.txt
     system("start cards.txt");
