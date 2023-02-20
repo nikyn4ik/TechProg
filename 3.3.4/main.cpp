@@ -7,28 +7,25 @@
 
 using namespace std;
 
-void performTask() { //функция - выбор программы для запуска
+void performTask() {
     char choice;
     do {
-        cout << "Program's:\n"; // выбор программы
-        cout << "a) 3.3.1\n"; //задание 1
-        cout << "b) 3.3.2\n"; //задание 2
-        cout << "c) 3.3.3\n"; //задание 3
-        cout << "d) Exit\n"; //выход и возвращение в предыдущее меню
+        cout << "Program's:\n";
+        cout << "a) 3.3.1\n";
+        cout << "b) 3.3.2\n";
+        cout << "c) 3.3.3\n";
+        cout << "d) Exit\n";
         cout << "Enter your choice: ";
         cin >> choice;
         switch (choice) {
         case 'a':
-            // задание 1
             system("start ..\\x64\\Debug\\3.3.1.exe");
             break;
         case 'b':
-            // задание 2
             system("start ..\\x64\\Debug\\3.3.2.exe");
             break;
         case 'c':
-            // задание 3
-            system("start ..\\x64\\Debug\\3.3.3.exe");
+            system("start ..\\3.2\\cards.txt");
             break;
         case 'd':
             cout << "Exiting program." << endl;
@@ -41,10 +38,7 @@ void performTask() { //функция - выбор программы для запуска
 }
 
 void readFromFile() { // функция читает данные из файла и осуществ. вывод
-    string filename;
-    cout << "Enter the name of the file to read from: "; // Введите имя файла для чтения
-    cin >> filename;
-    ifstream file(filename);
+    ifstream file("cards.txt");
     if (file.is_open()) { // если файл успешно открыт
         string line;
         while (getline(file, line)) { //чтение и вывод
@@ -58,11 +52,12 @@ void readFromFile() { // функция читает данные из файла и осуществ. вывод
 }
 
 int main() { //осн. функция
+    setlocale(LC_ALL, "Russian");
     char choice;
     do {
         cout << "Menu:\n"; //Меню
         cout << "a) Perform task\n"; //Выполнение
-        cout << "b) Read information from file\n"; //Прочитать информацию из файла
+        cout << "b) Read information from file (cards.txt)\n";
         cout << "c) Exit\n"; //Выход
         cout << "Enter your choice (a, b or c): "; //Выбор
         cin >> choice;
