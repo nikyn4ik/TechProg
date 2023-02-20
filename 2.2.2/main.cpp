@@ -39,25 +39,38 @@ int CountZeroElements() // функция подсчета кол-во нулевых элементов
 
 int main() // осн. функция
 {
-    char choice = 'y';
-    while (choice == 'y')
-    {
-        try
-        {
-            InputElements();
-        }
-        catch (const char* msg) // перехватываем исключение
-        {
-            std::cout << msg << std::endl; // выводим сообщение об ошибке
-            continue;
-        }
-
-        int count = CountZeroElements();
-        std::cout << "Number of zero elements: " << count << std::endl;
-
-        std::cout << "Do you want to continue (y/n)? ";
+    char choice;
+    do {
+        std::cout << "Menu:" << std::endl;
+        std::cout << "a) Start the program" << std::endl;
+        std::cout << "b) Exit" << std::endl;
+        std::cout << "Enter your choice (a or b): ";
         std::cin >> choice;
-    }
+
+        int count;
+        switch (choice) {
+        case 'a':
+            try
+            {
+                InputElements();
+            }
+            catch (const char* msg) // перехватываем исключение
+            {
+                std::cout << msg << std::endl; // выводим сообщение об ошибке
+                continue;
+            }
+
+            count = CountZeroElements();
+            std::cout << "Number of zero elements: " << count << std::endl; //кол-во 0 элементов
+            break;
+        case 'b':
+            std::cout << "Exiting the program." << std::endl; //выход
+            return 0;
+        default:
+            std::cout << "Invalid choice. Please enter 'a' or 'b'." << std::endl; //ошибка (метод исключения)
+            break;
+        }
+    } while (choice != 'b');
 
     return 0;
 }

@@ -1,7 +1,5 @@
-// main.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
-
 #include <iostream>
+#include <limits> // for std::numeric_limits
 
 float result; // глобальная переменная для хранения результата в формате float
 
@@ -28,30 +26,45 @@ void ConvertToFloat(int sum, float& result) // функция для конвертации целочисле
     result = static_cast<float>(sum); // // преобразование суммы в новый тип данных (float)
 }
 
+void ShowMenu() //меню
+{
+    std::cout << "Menu:" << std::endl;
+    std::cout << "a) Start the program" << std::endl;
+    std::cout << "b) Exit" << std::endl;
+    std::cout << "Enter your choice (a or b): ";
+}
+
 int main() //осн. функция
 {
+    char choice;
+    do {
+        ShowMenu();
+        std::cin >> choice;
 
-    int num1, num2, sum; // локальная переменная
+        switch (choice) {
+        case 'a':
+        {
+            int num1, num2, sum; // локальная переменная
 
-    InputData(num1, num2); // Ввод данных типа int и signed char с клавиатуры
+            InputData(num1, num2); // Ввод данных типа int и signed char с клавиатуры
 
-    CalculateSum(num1, num2, &sum); // Расчет суммы чисел
-    ConvertToFloat(sum, result); //функция преобразования суммы в тип float
+            CalculateSum(num1, num2, &sum); // Расчет суммы чисел
+            ConvertToFloat(sum, result); //функция преобразования суммы в тип float
 
-    // Вывод
-    std::cout << "Sum of numbers: " << result << std::endl;
-    std::cout << "Size of memory for sum: " << sizeof(result) << " bytes" << std::endl;
+            // Вывод
+            std::cout << "Sum of numbers: " << result << std::endl;
+            std::cout << "Size of memory for sum: " << sizeof(result) << " bytes" << std::endl;
+
+            break;
+        }
+        case 'b':
+            std::cout << "Exiting the program." << std::endl; //выход
+            return 0;
+        default:
+            std::cout << "Invalid choice. Please enter 'a' or 'b'." << std::endl; //ошибка (метод исключения)
+            break;
+        }
+    } while (choice != 'b');
 
     return 0;
 }
-
-// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
-// Debug program: F5 or Debug > Start Debugging menu
-
-// Tips for Getting Started: 
-//   1. Use the Solution Explorer window to add/manage files
-//   2. Use the Team Explorer window to connect to source control
-//   3. Use the Output window to see build output and other messages
-//   4. Use the Error List window to view errors
-//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
-//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file
