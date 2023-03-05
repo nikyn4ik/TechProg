@@ -48,7 +48,7 @@ int main() { //осн. функц.  + расчет длин сторон и гипотенуз прямоугольника
     // вычисление площади прямоугольника и вывод
     double area = rectangle_area(points[0], points[1], points[2], points[3]);
     std::cout << "Area of rectangle: " << area << std::endl; //площадь прямоугольника
-
+    system("pause");
     return 0;
 }
 
