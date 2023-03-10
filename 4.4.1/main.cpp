@@ -52,7 +52,7 @@ int main() { //осн. функц.  + расчет длин сторон и гипотенуз прямоугольника
     // вывод длин сторон и гипотенуз
     std::cout << "Lengths of sides:" << std::endl; //lлины сторон
     for (int i = 0; i < 4; i++) {
-        std::cout << "Side " << i << ": " << sides[i] << std::endl; //СТорона
+        std::cout << "Side " << i + 1 << ": " << sides[i] << std::endl; //СТорона
     }
     // вывод длин гипотенуз
     std::cout << "Lengths of hypotenuses:" << std::endl; //Длины сторон
