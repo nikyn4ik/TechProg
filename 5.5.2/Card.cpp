@@ -1,7 +1,7 @@
-#include "Card.h"
+#include "Card.h" // конструктор класса Card, инициализирует количество поездок в 0
 
 Card::Card() {
-    tripsLeft = 0;
+    tripsLeft = 0; // хранение кол-во поездок, доступных на карте
 }
 
 Card::~Card() {

@@ -6,21 +6,21 @@ using namespace std;
 
 class Card {
 protected:
-    int id;
+    int id; // защищенный член класса, идентификатор карты
 public:
-    Card(int _id) : id(_id) {}
+    Card(int _id) : id(_id) {} // конструктор, инициализирующий id
     virtual void show() = 0; // чисто виртуальная функция
-    int getID() { return id; }
+    int getID() { return id; } // метод, возвращающий идентификатор карты
 };
 
-class MetroCard : public Card {
+class MetroCard : public Card { //производный класс от Card
 private:
-    int balance; // баланс на карте
-public:
-    MetroCard(int _id, int _balance = 0) : Card(_id), balance(_balance) {}
-    void show() { cout << "Карта метро. ID: " << id << ", Баланс: " << balance << endl; }
-    void addBalance(int value) { balance += value; }
-    int getBalance() { return balance; }
+    int balance; // баланс на карте / защищенный член класса
+public: // конструктор, инициализирующий id и баланс карты
+    MetroCard(int _id, int _balance = 0) : Card(_id), balance(_balance) {} 
+    void show() { cout << "Карта метро. ID: " << id << ", Баланс: " << balance << endl; } // метод для вывода информации о карте метро
+    void addBalance(int value) { balance += value; }  // получение текущего баланса на карте метро
+    int getBalance() { return balance; } //списание средств со счёта карты метро
     bool use(int cost) { // возвращает true, если операция прошла успешно, и false в противном случае
         if (balance >= cost) {
             balance -= cost;
@@ -60,8 +60,8 @@ int getCardsWithoutTrips(MetroCard mc, StudentCard sc) {
 
 int main() {
     setlocale(LC_ALL, "Russian");
-    MetroCard mc(123, 50);
-    StudentCard sc(456);
+    MetroCard mc(123, 50); //создание объекта класса MetroCard с идентификатором 123 и балансом 50.
+    StudentCard sc(456); //создание объекта класса MetroCard с идентификатором 456.
 
     // вывод информации о картах
     mc.show();
@@ -89,7 +89,6 @@ int main() {
     system("pause");
     return 0;
 }
-
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
 // Debug program: F5 or Debug > Start Debugging menu

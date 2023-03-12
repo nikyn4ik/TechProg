@@ -3,16 +3,15 @@
 
 #include <iostream>
 #include <cstdlib>
-#include <ctime>
-#include "MetroCard.h"
-#include "StudentCard.h"
+#include <ctime> // преобразование времени в текстовую строку
+#include "MetroCard.h" // подключение заголовочного файла 
+#include "StudentCard.h"  // подключение заголовочного файла 
 
 int main() {
     setlocale(LC_ALL, "Russian");
-    const int METRO_CARD_COUNT = 10;
-    MetroCard* metroCards = new MetroCard[METRO_CARD_COUNT];
-
-    const int STUDENT_CARD_COUNT = 20;
+    const int METRO_CARD_COUNT = 10;  // константа для кол-во карт метро
+    MetroCard* metroCards = new MetroCard[METRO_CARD_COUNT]; // динамическое выделение памяти под массив
+    const int STUDENT_CARD_COUNT = 20; // константа для кол-во льготных
     StudentCard* studentCards = new StudentCard[STUDENT_CARD_COUNT];
 
     srand(time(NULL)); //  генератор случайных чисел
@@ -24,9 +23,9 @@ int main() {
 
     // выведите кол-во неиспользуемых карт для каждого типа
     std::cout << "Неиспользуемые карты метро: " << calculateUnusedCards(metroCards, METRO_CARD_COUNT) << std::endl;
-    std::cout << "Неиспользуемые студенческие карты: " << calculateUnusedCards(studentCards, STUDENT_CARD_COUNT) << std::endl;
+    std::cout << "Неиспользуемые льготные карты: " << calculateUnusedCards(studentCards, STUDENT_CARD_COUNT) << std::endl;
 
-    delete[] metroCards;
+    delete[] metroCards; // освобождение памяти, выделенной под массив
     delete[] studentCards;
     system("pause");
 }
